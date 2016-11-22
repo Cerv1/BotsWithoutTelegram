@@ -1,4 +1,4 @@
-cd /home/cervi/tg/bin/
+cd ~/tg/bin/
 
 (
 echo "contact_search ImageBot";sleep 1;
