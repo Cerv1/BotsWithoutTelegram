@@ -26,16 +26,7 @@ class Server{
           // server = serverSocket.accept();
           System.out.println("Computers connected...");
           Runtime rt = Runtime.getRuntime();
-          // Process proc = new ProcessBuilder("/home/cervi/tg/bin/telegram-cli","-N").start();
-          Process proc = new ProcessBuilder("/home/cervi/LeDankCloud-FR/src/WannaSeeCuteCats.sh","-N").start();
-          // contact_search ImageBot; msg ImageBot /get cat; load_file 2; quit; exit"
-          // Process proc = rt.exec("ls -la");
-          InputStream in = proc.getInputStream();
-          OutputStream out = proc.getOutputStream();
-          InputStream err = proc.getErrorStream();
-          Scanner s = new Scanner(in).useDelimiter("\\A");
-          String result = s.hasNext() ? s.next() : "";
-          System.out.println(result);
+          Process proc = new ProcessBuilder("/home/cervi/LeDankCloud-FR/src/WannaSeeCuteCats.sh").start();
           proc.destroy() ;
         // }
       }catch(Exception e){
@@ -44,6 +35,6 @@ class Server{
     }
   }
   public static void main (String args[]) throws IOException{
-  new Server();
+    new Server();
   }
 }
