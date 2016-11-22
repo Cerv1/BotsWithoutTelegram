@@ -1,9 +1,0 @@
-cd /home/cervi/tg/bin/
-
-echo "contact_search ImageBot"
-echo "msg ImageBot /get cat" 
-./telegram-cli -N
-# touch /home/cervi/LeDankCloud-FR/src/pasando.txt
-
-# contact_search ImageBot
-# msg ImageBot /get cat;
