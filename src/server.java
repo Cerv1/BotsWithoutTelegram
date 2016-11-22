@@ -26,7 +26,7 @@ class Server{
           // server = serverSocket.accept();
           System.out.println("Computers connected...");
           Runtime rt = Runtime.getRuntime();
-          Process proc = new ProcessBuilder("/home/cervi/LeDankCloud-FR/src/WannaSeeCuteCats.sh").start();
+          Process proc = new ProcessBuilder("~/LeDankCloud-FR/src/WannaSeeCuteCats.sh").start();
           proc.destroy() ;
         // }
       }catch(Exception e){
