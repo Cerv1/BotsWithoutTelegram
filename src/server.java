@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.lang.*;
 import java.io.*;
 import java.util.*;
 
@@ -25,9 +26,15 @@ class Server{
         // while(true){
           // server = serverSocket.accept();
           System.out.println("Computers connected...");
+          // Runtime rt = Runtime.getRuntime();
+          // ProcessBuilder proc = new ProcessBuilder("bash","/home/cervi/BotsWithoutTelegram/src/image_getter.sh");
+          // Process process = proc.start();
+          // System.out.println("Computers connected...");
+          // proc.destroy() ;
+          String target = new String("/home/cervi/BotsWithoutTelegram/src/image_getter.sh");
           Runtime rt = Runtime.getRuntime();
-          Process proc = new ProcessBuilder("~/LeDankCloud-FR/src/WannaSeeCuteCats.sh").start();
-          proc.destroy() ;
+          Process proc = rt.exec(target);
+          proc.waitFor();
         // }
       }catch(Exception e){
         // e.printStackTrace();
