@@ -1,4 +1,4 @@
-Using telegram bots without telegram.
+Using telegram bots without Telegram.
 ===========
 We're implementing an application in which we can use Telegram bot's features
 from our client without the need to have installed Telegram. The client needs
