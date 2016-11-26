@@ -1,5 +1,5 @@
 language: java
 jdk:
   - openjdk6
-before_install:
-  - cd java
+script:
+  - ant test
