@@ -1,6 +1,5 @@
 language: java
-sudo: true
+sudo: false
 jdk:
   - openjdk6
-script:
-  - ant test
+script: mvn clean verify
