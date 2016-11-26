@@ -32,6 +32,7 @@ class Server{
           // System.out.println("Computers connected...");
           // proc.destroy() ;
           String target = new String("/home/cervi/BotsWithoutTelegram/src/image_getter.sh");
+          target+=" cats";
           Runtime rt = Runtime.getRuntime();
           Process proc = rt.exec(target);
           proc.waitFor();
