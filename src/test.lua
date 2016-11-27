@@ -1,3 +1,4 @@
+get_contact_list ()
 
 -- send_msg (Adri, "it's working")
 

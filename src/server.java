@@ -26,7 +26,7 @@ class Server{
         // while(true){
           server = serverSocket.accept();
           System.out.println("Computers connected...");
-          String target = new String("/home/cervi/BotsWithoutTelegram/src/image_getter.sh");
+          String target = new String("/home/adri/BotsWithoutTelegram/src/image_getter.sh");
           DataInputStream input = new DataInputStream(server.getInputStream());
           target+=" ";
           target+=input.readUTF();
@@ -34,18 +34,19 @@ class Server{
           Process proc = rt.exec(target);
           proc.waitFor();
 
-          FileInputStream image = new FileInputStream("/home/cervi/.telegram-cli/downloads/image.jpg");
+          FileInputStream image = new FileInputStream("/home/adri/.telegram-cli/downloads/image");
           DataOutputStream output = new DataOutputStream(server.getOutputStream());
           int i;
           System.out.println("Sending image...");
           while((i=image.read())>-1){
             output.write(i);
           }
+
           image.close();
           output.close();
           server.close();
 
-          target = new String("rm -R /home/cervi/.telegram-cli/downloads");
+          target = new String("rm -R /home/adri/.telegram-cli/downloads");
           rt = Runtime.getRuntime();
           proc = rt.exec(target);
           proc.waitFor();
