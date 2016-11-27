@@ -26,11 +26,6 @@ class Server{
         // while(true){
           // server = serverSocket.accept();
           System.out.println("Computers connected...");
-          // Runtime rt = Runtime.getRuntime();
-          // ProcessBuilder proc = new ProcessBuilder("bash","/home/cervi/BotsWithoutTelegram/src/image_getter.sh");
-          // Process process = proc.start();
-          // System.out.println("Computers connected...");
-          // proc.destroy() ;
           String target = new String("/home/cervi/BotsWithoutTelegram/src/image_getter.sh");
           target+=" cats";
           Runtime rt = Runtime.getRuntime();
