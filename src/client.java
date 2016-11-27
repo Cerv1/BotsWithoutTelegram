@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.*;
 import java.lang.*;
 import java.net.Socket;
+import javax.imageio.*;
+import javax.swing.*;
 
 class Client{
 
@@ -25,11 +27,21 @@ class Client{
         String target = console.readLine("You want an image about... ");
         output.writeUTF(target);
         output.flush();
-        }catch(Exception e){
-          e.printStackTrace();
+        DataInputStream input = new DataInputStream(client.getInputStream());
+        FileOutputStream image = new FileOutputStream("/home/adri/Descargas/Telegram-CLI/socket-image.jpg");
+        int i;
+        while((i = input.read()) > -1){
+          image.write(i);
         }
+        image.flush();
+        image.close();
+        input.close();
+        client.close();
+      }catch(Exception e){
+        e.printStackTrace();
       }
     }
+  }
 
     public static void main(String [] args) throws IOException{
       new Client();
