@@ -24,10 +24,12 @@ class Server{
     public void runSender(){
       try{
         // while(true){
-          // server = serverSocket.accept();
+          server = serverSocket.accept();
           System.out.println("Computers connected...");
           String target = new String("/home/cervi/BotsWithoutTelegram/src/image_getter.sh");
-          target+=" cats";
+          DataInputStream input = new DataInputStream(server.getInputStream());
+          target+=" ";
+          target+=input.readUTF();
           Runtime rt = Runtime.getRuntime();
           Process proc = rt.exec(target);
           proc.waitFor();
