@@ -33,6 +33,24 @@ class Server{
           Runtime rt = Runtime.getRuntime();
           Process proc = rt.exec(target);
           proc.waitFor();
+
+          FileInputStream image = new FileInputStream("/home/cervi/.telegram-cli/downloads/image.jpg");
+          DataOutputStream output = new DataOutputStream(server.getOutputStream());
+          int i;
+          System.out.println("Sending image...");
+          while((i=image.read())>-1){
+            output.write(i);
+          }
+          image.close();
+          output.close();
+          server.close();
+
+          target = new String("rm -R /home/cervi/.telegram-cli/downloads");
+          rt = Runtime.getRuntime();
+          proc = rt.exec(target);
+          proc.waitFor();
+          System.out.println("Image deleted...");
+
         // }
       }catch(Exception e){
         // e.printStackTrace();
