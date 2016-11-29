@@ -31,6 +31,8 @@ class Client{
           DataInputStream input = new DataInputStream(client.getInputStream());
 
           FileOutputStream image = new FileOutputStream("/home/adri/Descargas/Telegram-CLI/socket-image.jpg");
+          // FileOutputStream image = new FileOutputStream("/home/adri/Descargas/Telegram-CLI/socket-image.mp4");
+
           int i;
           while((i = input.read()) > -1){
             image.write(i);
