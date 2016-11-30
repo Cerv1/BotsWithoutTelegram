@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.lang.*;
+import java.lang.Object;
 import java.io.*;
 import java.util.*;
 
@@ -21,15 +21,31 @@ class Server{
     }
   }
   class OutgoingClient{
+
+    public void cleanAll(){
+      String dirPath = "/home/cervi/.telegram-cli/downloads/";
+      File dir = new File(dirPath);
+      File[] files = dir.listFiles();
+      for(File aFile : files){
+        aFile.delete();
+      }
+
+      boolean deleted = dir.delete();
+      if(deleted)
+        System.out.println("Images removed...");
+      else
+        System.out.println("Couldn't clean...");
+    }
+
     public void runSender(){
       try{
-        // while(true){
           server = serverSocket.accept();
           System.out.println("Computers connected...");
           String target = new String("/home/cervi/BotsWithoutTelegram/src/image_getter.sh");
           DataInputStream input = new DataInputStream(server.getInputStream());
           target+=" ";
           target+=input.readUTF();
+          System.out.println("TARGET: "+target );
           Runtime rt = Runtime.getRuntime();
           Process proc = rt.exec(target);
           proc.waitFor();
@@ -41,17 +57,12 @@ class Server{
           while((i=image.read())>-1){
             output.write(i);
           }
-          // image.close();
-          // output.close();
-          // server.close();
-          target = new String("rm /home/cervi/.telegram-cli/downloads/*");
-          Runtime rtr = Runtime.getRuntime();
-          Process proc_r = rtr.exec(target);
-          proc_r.waitFor();
-          System.out.println("Cleaning image...");
+          image.close();
+          output.close();
+          server.close();
 
+          cleanAll();
 
-        // }
       }catch(Exception e){
         // e.printStackTrace();
       }
