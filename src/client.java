@@ -55,12 +55,18 @@ class Client{    //client side. the one who asks for a pic and receives it
 
         int i;
         while((i = input.read()) > -1)
-          file.write(i);
+          file.write(i);    //burn received image to file
 
-        file.flush();
-        file.close();
-        input.close();
-        client.close();
+        file.flush();     //
+        file.close();     //
+        input.close();    //
+        client.close();   //closing files, input and socket
+
+        Thread.sleep(1000);   //giving time to eog process to load the image
+        String target = "eog /home/adri/Descargas/Telegram-CLI/socket-image.jpg";
+        Runtime rt = Runtime.getRuntime();
+        Process proc = rt.exec(target);
+        proc.waitFor();
 
       }catch(Exception e){
         e.printStackTrace();
