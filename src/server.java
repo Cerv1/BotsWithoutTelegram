@@ -22,6 +22,7 @@ class Server{
   }
   class OutgoingClient{
 
+    // Delete all files and folder in path dirPath
     public void cleanAll(){
       String dirPath = "/home/cervi/.telegram-cli/downloads/";
       File dir = new File(dirPath);
@@ -39,30 +40,52 @@ class Server{
 
     public void runSender(){
       try{
-          server = serverSocket.accept();
+        while(true){      // Server is always up!
+          server = serverSocket.accept();   //Accept incoming connection
           System.out.println("Computers connected...");
-          String target = new String("/home/cervi/BotsWithoutTelegram/src/image_getter.sh");
+
+          // Path to our script wich executes telegram-cli and lua script
+          String target = new String("/home/cervi/BotsWithoutTelegram/src/image_getter.sh ");
+
+          // Read primitive Java data types
           DataInputStream input = new DataInputStream(server.getInputStream());
-          target+=" ";
-          target+=input.readUTF();
-          System.out.println("TARGET: "+target );
+
+          // Conversion of raw data type into string
+          String object = input.readUTF();
+          target+=object;
+          System.out.print("Gotta find a... "+object!);
+          System.out.println("       I'M ON IT!");
+
+          // Returns the runtime object associated with this application
           Runtime rt = Runtime.getRuntime();
+
+          // Create a subprocess wich executes target
           Process proc = rt.exec(target);
+
+          // Wait for it
           proc.waitFor();
 
+          // We get input bytes from image
           FileInputStream image = new FileInputStream("/home/cervi/.telegram-cli/downloads/image");
+
+          // Write primitive Java data types
           DataOutputStream output = new DataOutputStream(server.getOutputStream());
           int i;
           System.out.println("Sending image...");
+
+          // Write image in output
           while((i=image.read())>-1){
             output.write(i);
           }
+
+          // Close all
           image.close();
           output.close();
           server.close();
 
+          // Delete received images
           cleanAll();
-
+        }
       }catch(Exception e){
         // e.printStackTrace();
       }

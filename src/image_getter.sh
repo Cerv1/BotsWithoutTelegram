@@ -1,12 +1,10 @@
 #!/bin/bash
 
-echo "Iniciado script"
-
 cd ~/tg/bin/
 
 (
-echo "contact_search ImageBot";sleep 6;
-echo "msg ImageBot /get $1";sleep 8;
+echo "contact_search ImageBot";sleep 3;
+echo "msg ImageBot /get $1 $2";sleep 10;
 
 ) | ./telegram-cli -s ~/BotsWithoutTelegram/src/test.lua
 
