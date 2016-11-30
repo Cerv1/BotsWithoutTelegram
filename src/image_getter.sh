@@ -3,8 +3,8 @@
 cd ~/tg/bin/
 
 (
-echo "contact_search ImageBot";sleep 3;
-echo "msg ImageBot /get $1 $2";sleep 10;
+echo "contact_search ImageBot";sleep 4;
+echo "msg ImageBot /get $1 $2";sleep 11;
 
 ) | ./telegram-cli -s ~/BotsWithoutTelegram/src/test.lua
 

@@ -32,8 +32,11 @@ class Server{
       }
 
       boolean deleted = dir.delete();
-      if(deleted)
-        System.out.println("Images removed...");
+      if(deleted){
+        System.out.println("----------------------------------------");
+        System.out.println("            Deleting image              ");
+        System.out.println("----------------------------------------\n\n\n");
+      }
       else
         System.out.println("Couldn't clean...");
     }
@@ -53,8 +56,10 @@ class Server{
           // Conversion of raw data type into string
           String object = input.readUTF();
           target+=object;
-          System.out.print("Gotta find a... "+object!);
-          System.out.println("       I'M ON IT!");
+          System.out.println("Gotta find a... "+object+"!\n\n\n");
+          System.out.println("----------------------------------------");
+          System.out.println("            I'M   ON   IT!              ");
+          System.out.println("----------------------------------------");
 
           // Returns the runtime object associated with this application
           Runtime rt = Runtime.getRuntime();
@@ -71,7 +76,10 @@ class Server{
           // Write primitive Java data types
           DataOutputStream output = new DataOutputStream(server.getOutputStream());
           int i;
-          System.out.println("Sending image...");
+          System.out.println("----------------------------------------");
+          System.out.println("            Sending image               ");
+          System.out.println("----------------------------------------");
+
 
           // Write image in output
           while((i=image.read())>-1){
